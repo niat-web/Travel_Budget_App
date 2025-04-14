@@ -179,35 +179,29 @@
  
 
  async function fetchCurrencyData(query) {
-  const apiUrl = `https://freetestapi.com/api/v1/currencies?search=${query}`;
-  let data = null;
- 
-
-  try {
-  const response = await fetch(apiUrl);
-  if (response.ok) {
-  data = await response.json();
-  } else {
-  console.warn("Direct API call failed, attempting proxy.");
-  const proxyUrl = `https://api.allorigins.win/raw?url=${apiUrl}`;
-  const proxyResponse = await fetch(proxyUrl);
-  if (proxyResponse.ok) {
-  data = JSON.parse(proxyResponse.responseText);
-  } else {
-  console.error("Proxy API call failed.");
-  showNotification('Failed to fetch currency data.', 'error');
-  return null;
+    const apiUrl = `https://freetestapi.com/api/v1/currencies?search=${query}`;
+    let data = null;
+  
+    try {
+      const response = await fetch(apiUrl);
+      data = await response.json();
+    } catch (error) {
+      console.warn("Direct API call failed, attempting proxy.");
+      const proxyUrl = `https://api.allorigins.win/raw?url=${apiUrl}`;
+      const proxyResponse = await fetch(proxyUrl);
+      
+      // Use response.text() or response.json() to get the data
+      if (proxyResponse.ok) {
+        data = await proxyResponse.json();  // Corrected this line
+      } else {
+        console.error("Proxy API call failed.");
+        return null;
+      }
+    }
+  
+    return data;
   }
-  }
-  } catch (error) {
-  console.error("An error occurred during the API call:", error);
-  showNotification('An error occurred while fetching currency data.', 'error');
-  return null;
-  }
- 
-
-  return data;
- }
+  
  
 
  //Function to display currency data in UI

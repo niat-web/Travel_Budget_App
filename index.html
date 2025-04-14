@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Budget App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+ 
+
+  <header class="bg-dark text-white py-3">
+  <div class="container text-center">
+  <h1>Travel Budget App</h1>
+  <p>Plan your trip, track your expenses, and stay within budget.</p>
+  <button id="darkModeToggle" class="btn btn-light"><i class="fas fa-moon"></i> Dark Mode</button>
+  </div>
+  </header>
+ 
+
+  <main class="container mt-4">
+  <section id="budget-creation" class="mb-4">
+  <h2>Budget Creation</h2>
+  <div class="card">
+  <div class="card-body">
+  <form id="budgetForm">
+  <div class="form-group">
+  <label for="totalBudget">Total Budget:</label>
+  <input type="number" class="form-control" id="totalBudget" placeholder="Enter total budget" required>
+  <div class="invalid-feedback">Please enter a valid budget amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="accommodationBudget">Accommodation Budget:</label>
+  <input type="number" class="form-control" id="accommodationBudget" placeholder="Enter accommodation budget" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="foodBudget">Food Budget:</label>
+  <input type="number" class="form-control" id="foodBudget" placeholder="Enter food budget" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="transportationBudget">Transportation Budget:</label>
+  <input type="number" class="form-control" id="transportationBudget" placeholder="Enter transportation budget" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="activitiesBudget">Activities Budget:</label>
+  <input type="number" class="form-control" id="activitiesBudget" placeholder="Enter activities budget" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="shoppingBudget">Shopping Budget:</label>
+  <input type="number" class="form-control" id="shoppingBudget" placeholder="Enter shopping budget" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="otherBudget">Other Budget:</label>
+  <input type="number" class="form-control" id="otherBudget" placeholder="Enter other budget" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <button type="submit" class="btn btn-primary">Set Budget</button>
+  <div id="budgetNotification" class="mt-2"></div>
+  </form>
+  </div>
+  </div>
+  </section>
+ 
+
+  <section id="expense-tracking" class="mb-4">
+  <h2>Expense Tracking</h2>
+  <div class="card">
+  <div class="card-body">
+  <form id="expenseForm">
+  <div class="form-group">
+  <label for="expenseCategory">Category:</label>
+  <select class="form-control" id="expenseCategory" required>
+  <option value="">Select Category</option>
+  <option value="accommodation">Accommodation</option>
+  <option value="food">Food</option>
+  <option value="transportation">Transportation</option>
+  <option value="activities">Activities</option>
+  <option value="shopping">Shopping</option>
+  <option value="other">Other</option>
+  </select>
+  <div class="invalid-feedback">Please select a category.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="expenseAmount">Amount:</label>
+  <input type="number" class="form-control" id="expenseAmount" placeholder="Enter amount spent" required>
+  <div class="invalid-feedback">Please enter a valid amount.</div>
+  </div>
+ 
+
+  <div class="form-group">
+  <label for="expenseDate">Date:</label>
+  <input type="date" class="form-control" id="expenseDate" required>
+  </div>
+ 
+
+  <button type="submit" class="btn btn-primary">Add Expense</button>
+  </form>
+  </div>
+  </div>
+  </section>
+ 
+
+  <section id="budget-summary">
+  <h2>Budget Summary</h2>
+  <div class="card">
+  <div class="card-body">
+  <div id="budgetSummaryContent">
+  <!-- Budget summary details will be displayed here -->
+  </div>
+  </div>
+  </div>
+  </section>
+  
+  <section id="currency-check" class="mb-4">
+    <h2>Currency Check</h2>
+    <div class="card">
+        <div class="card-body">
+            <form id="currencyForm">
+                <div class="form-group">
+                    <label for="countryName">Country Name:</label>
+                    <input type="text" class="form-control" id="countryName" placeholder="Enter country name" required>
+                    <div class="invalid-feedback">Please enter a country name.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Check Currency</button>
+            </form>
+            <div id="currencyInfo" class="mt-3">
+                <!-- Currency information will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <button id="refreshButton" class="btn btn-secondary mt-2">Refresh Currency Data</button>
+  </section>
+  
+  </main>
+ 
+
+  <footer class="bg-dark text-white py-3 mt-4">
+  <div class="container text-center">
+  <p>&copy; 2024 Travel Budget App. All rights reserved.</p>
+  </div>
+  </footer>
+  
+  <div class="notification-container"></div>
+ 
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+ </body>
+ </html>
